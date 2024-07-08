@@ -12,10 +12,10 @@ def w5x00_init():
     nic.active(True)
     
 #None DHCP
-    nic.ifconfig(('192.168.2.2','255.255.255.0','192.168.2.1','8.8.8.8'))
+    # nic.ifconfig(('192.168.2.2','255.255.255.0','192.168.2.1','8.8.8.8'))
     
 #DHCP
-    #nic.ifconfig('dhcp')
+    nic.ifconfig('dhcp')
     print('IP address :', nic.ifconfig())
     
     while not nic.isconnected():
@@ -32,7 +32,7 @@ def get_request():
 list_of_ids = ["ifd2", "fdjk32", "f34s"]
     
 def post_request():
-    r = urequests.post('http://192.168.2.1:5173/api/sensors',
+    r = urequests.post('http://10.57.247.122:3000/api/sensors',
                        headers={"Authorization": "willis_is_cool"},
                        json={
                            "sensorID": random.choice(list_of_ids),
